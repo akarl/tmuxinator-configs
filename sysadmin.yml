@@ -1,0 +1,27 @@
+# ~/.tmuxinator/api.yml
+
+name: sysadmin
+root: /Users/andreas/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+pre: ./mount-vault
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window:
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+windows:
+  - editor:
+      layout: 7634,212x58,0,0{101x58,0,0[101x45,0,0,28,101x12,0,46,30],110x58,102,0,29}
+      panes:
+        - ssh gan@lb.gan.io
+        - less /Volumes/vault/passwords.txt
+        - ssh gan@lb.gan.io
